@@ -4,6 +4,28 @@ Class {
 	#category : #NeuralNetwork
 }
 
+{ #category : #'helper methods' }
+PerceptronTest >> digitalComparator: inputs [
+ "Return an array of three elements"
+ | not and nor a b aGb aEb aLb notA notB |
+ a := inputs first.
+ b := inputs second.
+
+"each kind of gate is a perceptron"
+ and := self newNeuron weights: #(1 1); bias: -1.5.
+ nor := self newNeuron weights: #(-1 -1); bias: 0.5.
+ not := self newNeuron weights: #(-1); bias: 0.5.
+
+ notA := not feed: { a }. "the signal actived from not gate for A"
+ notB := not feed: { b }. "the signal actived from not gate for B"
+
+ aLb := and feed: { notA . b }.
+ aGb := and feed: { a . notB }.
+ aEb := nor feed: { aGb . aLb }.
+
+ ^ { aGb . aEb . aLb }
+]
+
 { #category : #'instance creation' }
 PerceptronTest >> newNeuron [
 	"return a neuron"
@@ -21,6 +43,14 @@ PerceptronTest >> testAND [
 	self assert: (p feed: #(0 1)) equals: 0.
 	self assert: (p feed: #(1 0)) equals: 0.
 	self assert: (p feed: #(1 1)) equals: 1.
+]
+
+{ #category : #tests }
+PerceptronTest >> testDigitComparator [ 
+self assert: (self digitalComparator: #(0 0)) equals: #(0 1 0).
+self assert: (self digitalComparator: #(0 1)) equals: #(0 0 1).
+self assert: (self digitalComparator: #(1 0)) equals: #(1 0 0).
+self assert: (self digitalComparator: #(1 1)) equals: #(0 1 0).
 ]
 
 { #category : #tests }
