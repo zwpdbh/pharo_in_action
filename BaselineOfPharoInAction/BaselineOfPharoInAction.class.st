@@ -9,5 +9,5 @@ BaselineOfPharoInAction >> baseline: spec [
 <baseline>
 spec 
 	for: #common 
-	do: [ spec package: 'PharoInAction' ]
+	do: [ spec package: 'PBE-LightsOut NeuralNetwork' ]
 ]
