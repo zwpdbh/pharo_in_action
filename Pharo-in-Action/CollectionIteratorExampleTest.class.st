@@ -17,5 +17,5 @@ CollectionIteratorExampleTest >> setUp [
 
 { #category : #tests }
 CollectionIteratorExampleTest >> testIterateExample01 [
-self assert:  (#('abc' 'def' 'ghi') do: [ :e | e asUppercase ]) equals: #('ABC' 'DEF' 'GHI'). 
+self assert:  (#('abc' 'def' 'ghi') collect: [ :e | e asUppercase ]) equals: #('ABC' 'DEF' 'GHI'). 
 ]
