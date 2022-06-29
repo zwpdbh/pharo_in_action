@@ -5,15 +5,18 @@ Class {
 }
 
 { #category : #adding }
-LeetCode02Test >> addNumbersFrom: l1 and: l2 [ 
-   |integerl1 integerl2|
-	integerl1 := self fromArrayToInteger: (l1 reverse).
-	integerl2 := self fromArrayToInteger: (l2 reverse).
-	^ self fromNumberToArrayOfInteger: ((integerl1 + integerl2) asString reverse)
+LeetCode02Test >> addNumbersFrom: l1 and: l2 [
+
+	| integerl1 integerl2 |
+	integerl1 := self fromArrayToInteger: l1 reverse.
+	integerl2 := self fromArrayToInteger: l2 reverse.
+	^ self fromNumberToArrayOfInteger:
+		  (integerl1 + integerl2) asString reverse
 ]
 
 { #category : #'instance creation' }
 LeetCode02Test >> fromArrayToInteger: inputArray [ 
+"input could be #(1 2 3), output will be integer 123."
  	| result |
 	result := (inputArray inject: '' into: [ :acc :each | acc, each asString]) asInteger.
 	^ result.
@@ -21,6 +24,7 @@ LeetCode02Test >> fromArrayToInteger: inputArray [
 
 { #category : #'instance creation' }
 LeetCode02Test >> fromNumberToArrayOfInteger: input [ 
+"input could be 123, output will be #(1 2 3)"
 ^ (input asArray collect: [ :each | each asString ]) collect: [ :each | each asInteger ].
 ]
 
