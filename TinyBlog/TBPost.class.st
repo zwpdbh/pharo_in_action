@@ -69,6 +69,16 @@ self date: Date today.
 self notVisible
 ]
 
+{ #category : #testing }
+TBPost >> isUnclassified [ 
+^ self category = self class unclassifiedTag
+]
+
+{ #category : #testing }
+TBPost >> isVisible [ 
+^ self visible.
+]
+
 { #category : #action }
 TBPost >> notVisible [ 
 self visible: false
