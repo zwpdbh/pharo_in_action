@@ -8,7 +8,7 @@ Class {
 		'category',
 		'visible'
 	],
-	#category : #TinyBlog
+	#category : #'TinyBlog-Implementation'
 }
 
 { #category : #'instance creation' }

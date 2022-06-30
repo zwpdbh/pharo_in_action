@@ -25,5 +25,6 @@ post := TBPost
 	
 self assert: post title equals: 'Welcome to TinyBlog'.
 self assert: post category = TBPost unclassifiedTag.
+self deny: post isVisible.
 	
 ]
