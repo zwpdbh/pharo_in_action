@@ -23,9 +23,12 @@ LeetCode02Test >> fromArrayToInteger: inputArray [
 ]
 
 { #category : #'instance creation' }
-LeetCode02Test >> fromNumberToArrayOfInteger: input [ 
-"input could be 123, output will be #(1 2 3)"
-^ (input asArray collect: [ :each | each asString ]) collect: [ :each | each asInteger ].
+LeetCode02Test >> fromNumberToArrayOfInteger: input [
+
+	"input could be 123, output will be #(1 2 3)"
+
+	^ (input asArray collect: [ :each | each asString ]) collect: [ :each | 
+		  each asInteger ]
 ]
 
 { #category : #tests }
