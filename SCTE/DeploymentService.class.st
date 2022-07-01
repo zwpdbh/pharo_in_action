@@ -28,3 +28,8 @@ DeploymentService class >> getWorkflowFrom: id withAccessToken: token [
 	client isSuccess ifFalse: [ ^ self ].
 	^ NeoJSONReader fromString: client contents
 ]
+
+{ #category : #testing }
+DeploymentService class >> isWorkflowSuccess: workflowDict [ 
+^ (workflowDict at: 'status') asLowercase = 'complete'
+]
